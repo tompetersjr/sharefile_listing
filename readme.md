@@ -27,12 +27,12 @@ python3 listing.py -u username -p password -c clientid -s secret -n hostname
 
 Parameters | Description
 ---------- | -----------
--c | ShareFile ClientId *(Required)*
+-c | ShareFile ClientId *(Required if SHAREFILE_CLIENTID export is missing)*
 -h | Show Help
--n | ShareFile Host Name *(Required)*
--p | ShareFile Password *(Required)*
--s | ShareFile Secret Key *(Required)*
--u | ShareFile User Name *(Required)*
+-n | ShareFile Host Name *(Required if SHAREFILE_HOSTNAME export is missing)*
+-p | ShareFile Password *(Required if SHAREFILE_PASSWORD export is missing)*
+-s | ShareFile Secret Key *(Required if SHAREFILE_SECRET export is missing)*
+-u | ShareFile User Name *(Required if SHAREFILE_HOSTNAME export is missing)*
 
 ## Exports
 
