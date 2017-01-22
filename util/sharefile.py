@@ -1,4 +1,3 @@
-import json
 import requests
 
 
@@ -17,7 +16,7 @@ class ShareFile:
         uri_path = '/oauth/token'
 
         headers = {
-            'Content-Type':'application/x-www-form-urlencoded'
+            'Content-Type': 'application/x-www-form-urlencoded'
         }
         payload = {
             'grant_type': 'password',
@@ -27,7 +26,7 @@ class ShareFile:
             'password': self.password
         }
 
-        url="https://{}{}".format(self.hostname, uri_path)
+        url = "https://{}{}".format(self.hostname, uri_path)
         response = requests.post(url, headers=headers, data=payload)
 
         if response.status_code == 200:
@@ -36,17 +35,17 @@ class ShareFile:
         return self.token
 
     def get_authorization_header(self):
-        return {'Authorization':'Bearer %s'%(self.token['access_token'])}
+        return {'Authorization': 'Bearer {}'.format(self.token['access_token'])}
 
     def get_hostname(self):
-        return '%s.sf-api.com'%(self.token['subdomain'])
+        return '{}.sf-api.com'.format(self.token['subdomain'])
 
     def get_folder_templates(self):
         uri_path = '/sf/v3/FolderTemplates'
 
         headers = self.get_authorization_header()
 
-        url="https://{}{}".format(self.get_hostname(), uri_path)
+        url = "https://{}{}".format(self.get_hostname(), uri_path)
         response = requests.get(url, headers=headers)
 
         templates = None
@@ -60,7 +59,7 @@ class ShareFile:
 
         headers = self.get_authorization_header()
 
-        url="https://{}{}({})".format(self.get_hostname(), uri_path, folder_id)
+        url = "https://{}{}({})".format(self.get_hostname(), uri_path, folder_id)
         response = requests.get(url, headers=headers)
 
         templates = None
