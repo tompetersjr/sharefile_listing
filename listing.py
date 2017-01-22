@@ -1,6 +1,5 @@
 import argparse
 import os
-import requests
 import sys
 import traceback
 
